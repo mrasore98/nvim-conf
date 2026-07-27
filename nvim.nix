@@ -15,13 +15,13 @@
         mode = "n";
         key = "<leader>qq";
         action = ":qa<CR>";
-        description = "Quit All";
+        desc = "Quit All";
       }
       {
         mode = "n,i";
         key = "c-s";
         action = ":w<CR>";
-        description = "Write";
+        desc = "Write";
       }
     ];
 
