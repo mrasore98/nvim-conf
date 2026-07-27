@@ -10,6 +10,30 @@
       softtabstop = 2;
     };
 
+    keymaps = [
+      {
+        mode = "n";
+        key = "<leader>qq";
+        action = ":qa<CR>";
+        description = "Quit All";
+      }
+      {
+        mode = "n,i";
+        key = "c-s";
+        action = ":w<CR>";
+        description = "Write";
+      }
+    ];
+
+    diagnostics = {
+      enable = true;
+      config = {
+        signs = true;
+        underline = true;
+        update_in_insert = false;
+      };
+    };
+
     theme = {
       enable = true;
       name = "tokyonight";
@@ -17,8 +41,21 @@
     };
 
     statusline.lualine.enable = true;
-    tabline.nvimBufferline = {enable = true;};
-    telescope.enable = true;
+    tabline.nvimBufferline = {
+      enable = true;
+      mappings = {
+        closeCurrent = "<leader>bd";
+        cycleNext = "S-l";
+        cyclePrevious = "S-h";
+      };
+    };
+    telescope = {
+      enable = true;
+      mappings = {
+        findFiles = "<leader> ";
+        liveGrep = "<leader>/";
+      };
+    };
 
     binds = {
       whichKey.enable = true;
@@ -34,6 +71,7 @@
       toggleterm = {
         enable = true;
         lazygit.enable = true;
+        mappings.open = "C-/";
       };
     };
 
@@ -43,6 +81,21 @@
       inlayHints.enable = true;
       lightbulb.enable = true;
       trouble.enable = true;
+      lspconfig.enable = true;
+      mappings = {
+        codeAction = "<leader>ca";
+        goToDefinition = "<leader>gd";
+      };
+      presets = {
+        # Python
+        ty.enable = true;
+        ruff.enable = true;
+        # Rust
+        rust-analyzer.enable = true;
+        # Nix
+        nixd.enable = true;
+        nil.enable = true;
+      };
     };
 
     languages = {
@@ -50,6 +103,7 @@
       enableTreesitter = true;
       enableExtraDiagnostics = true;
       bash.enable = true;
+      clang.enable = true;
       json.enable = true;
       markdown.enable = true;
       nix.enable = true;
@@ -67,7 +121,10 @@
     };
 
     autopairs.nvim-autopairs.enable = true;
-    clipboard.enable = true;
+    clipboard = {
+      enable = true;
+      registers = "unnamedplus";
+    };
 
     autocomplete.nvim-cmp.enable = true;
     snippets.luasnip.enable = true;
