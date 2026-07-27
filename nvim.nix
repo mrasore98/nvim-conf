@@ -18,7 +18,7 @@
         desc = "Quit All";
       }
       {
-        mode = "n,i";
+        mode = ["n" "i"];
         key = "c-s";
         action = ":w<CR>";
         desc = "Write";
