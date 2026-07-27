@@ -19,7 +19,7 @@
       }
       {
         mode = ["n" "i"];
-        key = "c-s";
+        key = "C-s";
         action = ":w<CR>";
         desc = "Write";
       }
