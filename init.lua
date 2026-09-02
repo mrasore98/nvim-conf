@@ -1,13 +1,5 @@
 require("vim._core.ui2").enable({})
 -- PLUGINS
-vim.pack.add({
-    { src = "https://github.com/nvim-mini/mini.nvim" },  -- the workhorse
-    { src = "https://github.com/neovim/nvim-lspconfig" },  -- for simple LSP setup
-    { src = "https://github.com/nvim-treesitter/nvim-treesitter" },  -- better code navigation
-    { src = "https://github.com/folke/which-key.nvim" },  -- crutch
-    { src = "https://github.com/catppuccin/nvim", name = "catppuccin" },  -- style
-    { src = 'https://github.com/dmtrKovalenko/fff' },  -- picker
-})
 
 -- This is needed to get the rust dylib for new versions of fff
 -- NOTE: On fresh installs, this may fail.
@@ -21,6 +13,16 @@ vim.api.nvim_create_autocmd('PackChanged', {
     end
   end,
 })
+
+vim.pack.add({
+    { src = "https://github.com/nvim-mini/mini.nvim" },  -- the workhorse
+    { src = "https://github.com/neovim/nvim-lspconfig" },  -- for simple LSP setup
+    { src = "https://github.com/nvim-treesitter/nvim-treesitter" },  -- better code navigation
+    { src = "https://github.com/folke/which-key.nvim" },  -- crutch
+    { src = "https://github.com/catppuccin/nvim", name = "catppuccin" },  -- style
+    { src = 'https://github.com/dmtrKovalenko/fff' },  -- picker
+})
+
 
 vim.g.fff = {
   lazy_sync = true,
