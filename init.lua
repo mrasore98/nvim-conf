@@ -159,5 +159,8 @@ local function toggle_terminal()
     vim.cmd.startinsert()
 end
 
+-- Ctrl-/ is reported differently by different terminal emulators/OSes.
+-- Git Bash/mintty reports it as <C-_>; macOS terminals may report it as <C-/>.
 vim.keymap.set({ 'n', 't' }, '<C-_>', toggle_terminal, { desc = 'Toggle terminal' })
+vim.keymap.set({ 'n', 't' }, '<C-/>', toggle_terminal, { desc = 'Toggle terminal' })
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>')
