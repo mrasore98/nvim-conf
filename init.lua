@@ -21,6 +21,7 @@ vim.pack.add({
     { src = "https://github.com/folke/which-key.nvim" },  -- crutch
     { src = "https://github.com/catppuccin/nvim", name = "catppuccin" },  -- style
     { src = 'https://github.com/dmtrKovalenko/fff' },  -- picker
+    { src = "https://github.com/lewis6991/gitsigns.nvim" }, -- git management
 })
 
 
@@ -102,6 +103,7 @@ vim.keymap.set('n', '<leader>f', MiniFiles.open, { desc = "Mini Files" })
 -- UNCATEGORIZED
 require("mini.ai").setup()
 require("mini.surround").setup()
+require("gitsigns").setup()
 
 
 -- AUTOCMDS
