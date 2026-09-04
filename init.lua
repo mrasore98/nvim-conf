@@ -35,6 +35,7 @@ vim.o.number = true
 vim.o.relativenumber = true
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
+vim.o.wrap = false
 vim.o.tabstop = 4
 vim.o.softtabstop = 4
 vim.o.ignorecase = true
@@ -47,7 +48,7 @@ vim.diagnostic.config({
 
 -- KEYMAP CONFIG
 vim.g.mapleader = " "
-vim.keymap.set('n', '<leader>qq', ':quit<CR>', {desc = "Quit"})
+vim.keymap.set('n', '<leader>qq', ':qall<CR>', {desc = "Quit"})
 vim.keymap.set('n', '<leader>rr', ':restart<CR>', {desc = "Restart"})
 -- window navigation
 vim.keymap.set('n', '<C-h>', '<C-w>h')
