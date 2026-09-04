@@ -81,8 +81,8 @@ require("mini.tabline").setup({})
 require("which-key").setup({ preset = "helix" }) -- Apply theme and window pos
 
 -- LANGUAGE SUPPORT
-require('nvim-treesitter').install({'lua', 'rust', 'python'})
-vim.lsp.enable({'lua_ls', 'ty', 'ruff', 'rust_analyzer'})
+require('nvim-treesitter').install({'lua', 'rust', 'python', 'nix'})
+vim.lsp.enable({'lua_ls', 'ty', 'ruff', 'rust_analyzer', 'nixd', 'nil_ls'})
 require("mini.completion").setup()
 
 -- PICKER
