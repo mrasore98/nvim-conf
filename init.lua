@@ -66,7 +66,14 @@ vim.keymap.set('n', '<leader>dt', function()
     local config = vim.diagnostic.config()
     vim.diagnostic.config({virtual_text = not config.virtual_text})
 end, { desc = "Toggle inline diagnostics"} )
-
+-- LSP and formating
+vim.keymap.set('n', 'lf', vim.lsp.buf.format, {desc = "Format buffer"}) 
+vim.keymap.set({'n', 'i'}, '<C-s>', function()
+    vim.lsp.buf.format()
+    vim.cmd('write')
+end, { desc = "Format and save" })
+vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, {desc = "Code actions"})
+vim.keymap.set('n', '<leader>cr', vim.lsp.buf.rename, {desc = "Code rename"})
 -- APPEARANCE
 vim.o.winborder = "rounded"
 require("catppuccin").setup({
