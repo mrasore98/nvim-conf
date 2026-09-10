@@ -5,29 +5,29 @@ require("vim._core.ui2").enable({})
 -- NOTE: On fresh installs, this may fail.
 -- To fix, run `:lua require("fff.download").download_or_build_binary()`
 vim.api.nvim_create_autocmd('PackChanged', {
-  callback = function(ev)
-    local name, kind = ev.data.spec.name, ev.data.kind
-    if name == 'fff' and (kind == 'install' or kind == 'update') then
-      if not ev.data.active then vim.cmd.packadd('fff') end
-      require('fff.download').download_or_build_binary()
-    end
-  end,
+    callback = function(ev)
+        local name, kind = ev.data.spec.name, ev.data.kind
+        if name == 'fff' and (kind == 'install' or kind == 'update') then
+            if not ev.data.active then vim.cmd.packadd('fff') end
+            require('fff.download').download_or_build_binary()
+        end
+    end,
 })
 
 vim.pack.add({
-    { src = "https://github.com/nvim-mini/mini.nvim" },  -- the workhorse
-    { src = "https://github.com/neovim/nvim-lspconfig" },  -- for simple LSP setup
-    { src = "https://github.com/nvim-treesitter/nvim-treesitter" },  -- better code navigation
-    { src = "https://github.com/folke/which-key.nvim" },  -- crutch
-    { src = "https://github.com/catppuccin/nvim", name = "catppuccin" },  -- style
-    { src = 'https://github.com/dmtrKovalenko/fff' },  -- picker
-    { src = "https://github.com/lewis6991/gitsigns.nvim" }, -- git management
+    { src = "https://github.com/nvim-mini/mini.nvim" },                  -- the workhorse
+    { src = "https://github.com/neovim/nvim-lspconfig" },                -- for simple LSP setup
+    { src = "https://github.com/nvim-treesitter/nvim-treesitter" },      -- better code navigation
+    { src = "https://github.com/folke/which-key.nvim" },                 -- crutch
+    { src = "https://github.com/catppuccin/nvim", name = "catppuccin" }, -- style
+    { src = 'https://github.com/dmtrKovalenko/fff' },                    -- picker
+    { src = "https://github.com/lewis6991/gitsigns.nvim" },              -- git management
 })
 
 
 vim.g.fff = {
-  lazy_sync = true,
-  debug = { enabled = false, show_scores = true },
+    lazy_sync = true,
+    debug = { enabled = false, show_scores = true },
 }
 
 -- EDITOR OPTIONS
@@ -40,40 +40,41 @@ vim.o.tabstop = 4
 vim.o.softtabstop = 4
 vim.o.ignorecase = true
 vim.o.smartcase = true
-vim.o.clipboard = "unnamedplus"  -- integrate with system clipboard
-vim.opt.pumheight = 10  -- limit popup menu height
+vim.o.clipboard = "unnamedplus" -- integrate with system clipboard
+vim.opt.pumheight = 10          -- limit popup menu height
+vim.o.cmdheight = 0             -- Do not show bottom line
 vim.diagnostic.config({
     virtual_text = false
 })
 
 -- KEYMAP CONFIG
 vim.g.mapleader = " "
-vim.keymap.set('n', '<leader>qq', ':qall<CR>', {desc = "Quit"})
-vim.keymap.set('n', '<leader>rr', ':restart<CR>', {desc = "Restart"})
+vim.keymap.set('n', '<leader>qq', ':qall<CR>', { desc = "Quit" })
+vim.keymap.set('n', '<leader>rr', ':restart<CR>', { desc = "Restart" })
 -- window navigation
 vim.keymap.set('n', '<C-h>', '<C-w>h')
 vim.keymap.set('n', '<C-l>', '<C-w>l')
 vim.keymap.set('n', '<C-j>', '<C-w>j')
 vim.keymap.set('n', '<C-k>', '<C-w>k')
 --buffer navigation
-vim.keymap.set('n', '<S-h>', ':bp<CR>', {desc = "Next buffer"})
-vim.keymap.set('n', '<S-l>', ':bn<CR>', {desc = "Previous buffer"})
+vim.keymap.set('n', '<S-h>', ':bp<CR>', { desc = "Next buffer" })
+vim.keymap.set('n', '<S-l>', ':bn<CR>', { desc = "Previous buffer" })
 vim.keymap.set('n', '<C-d>', '<C-d>zz') -- Move down, centered
 vim.keymap.set('n', '<C-u>', '<C-u>zz') -- Move up, centered
 -- diagnostics
-vim.keymap.set('n', '<leader>ds', vim.diagnostic.open_float, {desc = "Show diagnostic"})
+vim.keymap.set('n', '<leader>ds', vim.diagnostic.open_float, { desc = "Show diagnostic" })
 vim.keymap.set('n', '<leader>dt', function()
     local config = vim.diagnostic.config()
-    vim.diagnostic.config({virtual_text = not config.virtual_text})
-end, { desc = "Toggle inline diagnostics"} )
+    vim.diagnostic.config({ virtual_text = not config.virtual_text })
+end, { desc = "Toggle inline diagnostics" })
 -- LSP and formating
-vim.keymap.set('n', 'lf', vim.lsp.buf.format, {desc = "Format buffer"}) 
-vim.keymap.set({'n', 'i'}, '<C-s>', function()
+vim.keymap.set('n', 'lf', vim.lsp.buf.format, { desc = "Format buffer" })
+vim.keymap.set({ 'n', 'i' }, '<C-s>', function()
     vim.lsp.buf.format()
     vim.cmd('write')
 end, { desc = "Format and save" })
-vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, {desc = "Code actions"})
-vim.keymap.set('n', '<leader>cr', vim.lsp.buf.rename, {desc = "Code rename"})
+vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = "Code actions" })
+vim.keymap.set('n', '<leader>cr', vim.lsp.buf.rename, { desc = "Code rename" })
 -- APPEARANCE
 vim.o.winborder = "rounded"
 require("catppuccin").setup({
@@ -88,8 +89,9 @@ require("mini.tabline").setup({})
 require("which-key").setup({ preset = "helix" }) -- Apply theme and window pos
 
 -- LANGUAGE SUPPORT
-require('nvim-treesitter').install({'lua', 'rust', 'python', 'nix'})
-vim.lsp.enable({'lua_ls', 'ty', 'ruff', 'rust_analyzer', 'nixd', 'nil_ls'})
+require('nvim-treesitter').install({ 'lua', 'rust', 'python', 'nix' })
+require('nvim-treesitter').setup({ highlight = { enable = true, additional_vim_regex_highlighting = false } })
+vim.lsp.enable({ 'lua_ls', 'ty', 'ruff', 'rust_analyzer', 'nixd', 'nil_ls', 'java_language_server', 'zls' })
 require("mini.completion").setup()
 
 -- PICKER
@@ -102,7 +104,7 @@ picker.setup({
     },
 })
 vim.keymap.set('n', '<leader> ', picker.find_files, { desc = "Find files" })
-vim.keymap.set('n', '<leader>/', picker.live_grep, { desc = "Grep"})
+vim.keymap.set('n', '<leader>/', picker.live_grep, { desc = "Grep" })
 
 -- FILES
 require("mini.files").setup({ window = { preview = true } })
@@ -129,9 +131,9 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 
 -- Highlight on yank
 vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
+    callback = function()
+        vim.highlight.on_yank()
+    end,
 })
 
 
