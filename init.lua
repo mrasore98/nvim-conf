@@ -19,7 +19,7 @@ vim.pack.add({
     { src = "https://github.com/neovim/nvim-lspconfig" },                -- for simple LSP setup
     { src = "https://github.com/nvim-treesitter/nvim-treesitter" },      -- better code navigation
     { src = "https://github.com/folke/which-key.nvim" },                 -- crutch
-    { src = "https://github.com/catppuccin/nvim", name = "catppuccin" }, -- style
+    { src = "https://github.com/catppuccin/nvim",                name = "catppuccin" }, -- style
     { src = 'https://github.com/dmtrKovalenko/fff' },                    -- picker
     { src = "https://github.com/lewis6991/gitsigns.nvim" },              -- git management
 })
@@ -171,6 +171,6 @@ end
 
 -- Ctrl-/ is reported differently by different terminal emulators/OSes.
 -- Git Bash/mintty reports it as <C-_>; macOS terminals may report it as <C-/>.
-vim.keymap.set({ 'n', 't' }, '<C-_>', toggle_terminal, { desc = 'Toggle terminal' })
-vim.keymap.set({ 'n', 't' }, '<C-/>', toggle_terminal, { desc = 'Toggle terminal' })
+vim.keymap.set({ 'n', 't', 'i' }, '<C-_>', toggle_terminal, { desc = 'Toggle terminal' })
+vim.keymap.set({ 'n', 't', 'i' }, '<C-/>', toggle_terminal, { desc = 'Toggle terminal' })
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>')
