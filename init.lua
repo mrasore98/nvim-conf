@@ -15,13 +15,13 @@ vim.api.nvim_create_autocmd('PackChanged', {
 })
 
 vim.pack.add({
-    { src = "https://github.com/nvim-mini/mini.nvim" },                  -- the workhorse
-    { src = "https://github.com/neovim/nvim-lspconfig" },                -- for simple LSP setup
-    { src = "https://github.com/nvim-treesitter/nvim-treesitter" },      -- better code navigation
-    { src = "https://github.com/folke/which-key.nvim" },                 -- crutch
+    { src = "https://github.com/nvim-mini/mini.nvim" },                                 -- the workhorse
+    { src = "https://github.com/neovim/nvim-lspconfig" },                               -- for simple LSP setup
+    { src = "https://github.com/nvim-treesitter/nvim-treesitter" },                     -- better code navigation
+    { src = "https://github.com/folke/which-key.nvim" },                                -- crutch
     { src = "https://github.com/catppuccin/nvim",                name = "catppuccin" }, -- style
-    { src = 'https://github.com/dmtrKovalenko/fff' },                    -- picker
-    { src = "https://github.com/lewis6991/gitsigns.nvim" },              -- git management
+    { src = 'https://github.com/dmtrKovalenko/fff' },                                   -- picker
+    { src = "https://github.com/lewis6991/gitsigns.nvim" },                             -- git management
 })
 
 
@@ -40,6 +40,10 @@ vim.o.tabstop = 4
 vim.o.softtabstop = 4
 vim.o.ignorecase = true
 vim.o.smartcase = true
+vim.o.foldmethod = "indent"
+vim.o.foldlevel = 99 -- start with folds open
+vim.o.foldlevelstart = 99
+vim.opt.foldenable = true
 vim.o.clipboard = "unnamedplus" -- integrate with system clipboard
 vim.opt.pumheight = 10          -- limit popup menu height
 vim.o.cmdheight = 0             -- Do not show bottom line
@@ -112,6 +116,7 @@ vim.keymap.set('n', '<leader>f', MiniFiles.open, { desc = "Mini Files" })
 
 -- UNCATEGORIZED
 require("mini.ai").setup()
+require("mini.pairs").setup()
 require("mini.surround").setup()
 require("gitsigns").setup()
 
