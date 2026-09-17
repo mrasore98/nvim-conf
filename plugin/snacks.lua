@@ -1,5 +1,17 @@
 require("snacks").setup({
-    picker = { enabled = true },
+    picker = {
+        enabled = true,
+        sources = {
+            help = {
+                layout = {
+                    preset = "ivy",
+                    layout = {
+                        position = "bottom"
+                    }
+                }
+            }
+        }
+    },
     lazygit = { enabled = true },
 })
 
@@ -10,7 +22,8 @@ vim.ui.select = Snacks.picker.select
 vim.keymap.set("n", "<leader> ", Snacks.picker.smart, { desc = "Find files" })
 vim.keymap.set("n", "<leader>/", Snacks.picker.grep, { desc = "Grep" })
 vim.keymap.set("n", "<leader>ff", Snacks.picker.files, { desc = "Find files" })
-vim.keymap.set("n", "<leader>fb", Snacks.picker.buffers)
+vim.keymap.set("n", "<leader>fb", Snacks.picker.buffers, { desc = "Find buffers" })
+vim.keymap.set("n", "<leader>fh", Snacks.picker.help, { desc = "Search help" })
 
 
 -- Git keymaps
