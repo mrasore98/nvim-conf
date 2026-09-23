@@ -9,6 +9,11 @@ require("snacks").setup({
                         position = "bottom"
                     }
                 }
+            },
+            keymaps = {
+                layout = {
+                    preset = "dropdown"
+                }
             }
         }
     },
@@ -24,6 +29,7 @@ vim.keymap.set("n", "<leader>/", Snacks.picker.grep, { desc = "Grep" })
 vim.keymap.set("n", "<leader>ff", Snacks.picker.files, { desc = "Find files" })
 vim.keymap.set("n", "<leader>fb", Snacks.picker.buffers, { desc = "Find buffers" })
 vim.keymap.set("n", "<leader>fh", Snacks.picker.help, { desc = "Search help" })
+vim.keymap.set("n", "<leader>fk", Snacks.picker.keymaps, { desc = "Search keymaps" })
 
 
 -- Git keymaps
