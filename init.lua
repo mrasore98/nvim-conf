@@ -8,6 +8,7 @@ vim.pack.add({
     { src = "https://github.com/folke/which-key.nvim" },                                -- crutch
     { src = "https://github.com/catppuccin/nvim",                name = "catppuccin" }, -- style
     { src = "https://github.com/lewis6991/gitsigns.nvim" },                             -- git management
+    { src = "https://github.com/MeanderingProgrammer/render-markdown.nvim"},            -- Markdown view
 })
 
 require("config.options")
