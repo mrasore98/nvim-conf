@@ -8,7 +8,7 @@ vim.lsp.enable({
     'rust_analyzer',
     'nixd',
     'nil_ls',
-    'java_language_server',
+    'jdtls',
     'zls'
 })
 
