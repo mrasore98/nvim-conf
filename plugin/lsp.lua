@@ -9,6 +9,7 @@ vim.lsp.enable({
     'nixd',
     'nil_ls',
     'jdtls',
+    'tinymist',
     'zls'
 })
 
